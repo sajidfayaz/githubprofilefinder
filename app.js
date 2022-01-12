@@ -10,11 +10,13 @@ const ui = new UI;
 const searchUser = document.querySelector("#search-user");
 
 // Search input event listener
-searchUser.addEventListener("keyup", (e) => {
+searchUser.addEventListener("keypress", (e) => {
     // Get the text being typed
+    var key = e.which || e.keyCode || 0;
     const userText = e.target.value;
 
-    if(userText !== "") {
+    //if(userText !== "") 
+    if (key === 13){
         // Make HTTP call
         github.getUser(userText)
             .then(data => {
